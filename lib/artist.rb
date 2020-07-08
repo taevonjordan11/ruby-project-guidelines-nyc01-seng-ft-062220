@@ -6,14 +6,37 @@ class Artist < ActiveRecord::Base
   #   Project.create(artist: self, title: title_inst, engineer: engineer)
   # end
 
-  def remove_engineer(project)
-    if project == project
-      project.engineer = nil
-      "Current Mastering Engineer Removed."
+  def self.register_new_user
+    puts "Okay, what would you like your username to be?"
+    username = gets.chomp
+     if Artist.find_by(name: username)
+       puts "please choose another name"
+     else
+       Artist.create(name: username)
+      p "Welcome to the master client, #{username}!"
+     end
+  end
+
+  def self.login_a_user
+    puts "What is your username?"
+    username = gets.chomp
+
+    if Artist.find_by(name: username)
+      Artist.find_by(name: username)
     else
-      "Please Enter a VALID project."
+      puts "This user does not exist, please try again."
     end
   end
+
+
+  # def remove_engineer(project)
+  #   if project == project
+  #     project.engineer = nil
+  #     "Current Mastering Engineer Removed."
+  #   else
+  #     "Please Enter a VALID project."
+  #   end
+  # end
 
   def project_release(project, r_date)
     if project == project

@@ -1,9 +1,19 @@
 require_relative '../config/environment'
 
 
-cli_isnt = CLI.new
+cli_inst = CLI.new
 
-userchoice = cli_isnt.greeting()
+logged_in_user= cli_inst.greeting()
+
+until !logged_in_user.nil?
+  sleep 2
+  userchoice = cli_inst.greeting()
+end
+
+cli_inst.artist = logged_in_user
+
+cli_inst.main_menu
+
 
 binding.pry
 0
