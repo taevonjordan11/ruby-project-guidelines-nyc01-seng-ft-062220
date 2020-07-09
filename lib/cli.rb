@@ -18,7 +18,7 @@ class CLI
                 ██║     ██║     ██║██╔══╝  ██║╚██╗██║   ██║
                 ╚██████╗███████╗██║███████╗██║ ╚████║   ██║
                  ╚═════╝╚══════╝╚═╝╚══════╝╚═╝  ╚═══╝   ╚═╝
-                                                                              ".magenta
+                                                                              ".magenta.blink
     puts "                              created by. Taevon Jordan".yellow
     sleep 2
 
@@ -30,7 +30,7 @@ class CLI
       # menu.choice "quit", -> {self.goodbye}
     end
   end
-
+#Want to make Engineer Log-in
   def main_menu
     system "clear"
     # self.artist.reload
@@ -38,7 +38,7 @@ class CLI
     prompt.select("Please make a choice from the list below.") do |menu|
       # menu.choice "List all projects", -> {self.list_all_projects}
       menu.choice "Create Project", -> {Artist.create_project}
-      menu.choice "Master a Project", -> {self.master_project}
+      # menu.choice "Master a Project", -> {Engineer.master_project}
       menu.choice "View my projects", -> {self.my_projects}
       menu.choice "View my engineers", -> {self.my_engineers}
       menu.choice "How many projects do I have?", -> {self.num_of_projects}
@@ -99,28 +99,11 @@ class CLI
 
 
 # NEEDS SOME DEBUGGING
-  def create_project
-    # puts "To start, enter your stage name.".yellow
-    # stage_name = self.artist
-    puts "Okay. Whats the name of your project?".yellow
-    project_name = gets.chomp
-    puts "Is the project Mastered? type 'true' or 'false'".yellow
-    bool = gets.chomp
-    puts " Okay, and lastly, What is your potential release date?".yellow
-    release = gets.chomp
-    # if Artist.find_by(name: stage_name) == artist.name
-    Project.create(self, title: project_name, submitted: bool, release_date: release, artist: self)
-  # else
-    puts "Something went wrong...Returning to Main Menu."
-  # end
-    self.main_menu
-  end
-
   def master_project
     puts "Type the title of the Project you would like to get mastered."
     project_title = gets.chomp
     if Project.find_by(title: project_title)
-      Project.find_by.update(submitted: project_title, submitted: true)
+      Project.find_by.update(title: project_title, submitted: true)
        print "#{project_title} has been mastered."
     else
       puts "Please enter valid project."

@@ -98,8 +98,8 @@ cli_inst.main_menu
 #   puts "  list artists\t\t:list all artists".green
 #   puts "  list engineers\t:list all engineers with their credentials".green
 #   puts "Quit".bold
-#   puts "  quit\t\t\t:quit the program".green
-#   puts "  exit\t\t\t:alias for quit".green
+#   puts "  quit\t\t\t:quit the program"
+#   puts "  exit\t\t\t:alias for quit"
 #   end
 #
 #   def self.submit_project(project)
