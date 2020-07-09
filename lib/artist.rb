@@ -29,14 +29,14 @@ class Artist < ActiveRecord::Base
   end
 
 
-  # def remove_engineer(project)
-  #   if project == project
-  #     project.engineer = nil
-  #     "Current Mastering Engineer Removed."
-  #   else
-  #     "Please Enter a VALID project."
-  #   end
-  # end
+  def remove_engineer(project)
+    if project == project
+      project.engineer = nil
+      "Current Mastering Engineer Removed."
+    else
+      "Please Enter a VALID project."
+    end
+  end
 
   def project_release(project, r_date)
     if project == project

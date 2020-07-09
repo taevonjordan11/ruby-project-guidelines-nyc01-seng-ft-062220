@@ -15,7 +15,7 @@ cli_inst.artist = logged_in_user
 cli_inst.main_menu
 
 
-binding.pry
+# binding.pry
 0
 
 

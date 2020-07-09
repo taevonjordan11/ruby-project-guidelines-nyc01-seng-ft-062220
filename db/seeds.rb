@@ -16,3 +16,4 @@ p1 = Project.create(title: "Point of Love", submitted: false, artist: a1, engine
 p2 = Project.create(title: "wonte.", submitted: false, artist: a2, engineer: e1)
 p3 = Project.create(title: "Loony Tunes", submitted: false, artist: a3, engineer: e2)
 p4 = Project.create(title: "Jaz-Tapes", submitted: false, artist: a4, engineer: e3)
+p5 = Project.create(title: "The Carter 22", submitted: false, artist: a2, engineer: e4)
