@@ -33,15 +33,17 @@ class CLI
 
   def main_menu
     system "clear"
-    self.artist.reload
+    # self.artist.reload
     puts "Great. You are #{self.artist.name}."
     prompt.select("Please make a choice from the list below.") do |menu|
       # menu.choice "List all projects", -> {self.list_all_projects}
-      menu.choice "Create Project", -> {self.create_project}
+      menu.choice "Create Project", -> {Artist.create_project}
+      menu.choice "Master a Project", -> {self.master_project}
       menu.choice "View my projects", -> {self.my_projects}
       menu.choice "View my engineers", -> {self.my_engineers}
-      menu.choice "How many projects do i have?", -> {self.num_of_projects}
+      menu.choice "How many projects do I have?", -> {self.num_of_projects}
       menu.choice "Update Artist Name.", -> {self.new_name}
+      menu.choice "Remove Project.", -> {Project.delete}
 
       # menu.choice "List all artists", -> {self.list_all_artists}
 
@@ -96,31 +98,35 @@ class CLI
   # end
 
 
-# NEEDS SOME DEBUGGING 
+# NEEDS SOME DEBUGGING
   def create_project
     # puts "To start, enter your stage name.".yellow
-    # stage_name = gets.chomp
+    # stage_name = self.artist
     puts "Okay. Whats the name of your project?".yellow
     project_name = gets.chomp
     puts "Is the project Mastered? type 'true' or 'false'".yellow
     bool = gets.chomp
     puts " Okay, and lastly, What is your potential release date?".yellow
     release = gets.chomp
-    Project.create(title: project_name, submitted: bool, release_date: release)
+    # if Artist.find_by(name: stage_name) == artist.name
+    Project.create(self, title: project_name, submitted: bool, release_date: release, artist: self)
+  # else
+    puts "Something went wrong...Returning to Main Menu."
+  # end
     self.main_menu
   end
 
-  # def master_project
-  #   puts "Type the Project you would like to master."
-  #   project_title = gets.chomp
-  #   if Project.find_by(title: project_title)
-  #     Project.find_by(title: project_title)
-  #      print "#{project_title} has been mastered."
-  #   else
-  #     puts "Please enter valid project."
-  #   end
-  #   self.main_menu
-  # end
+  def master_project
+    puts "Type the title of the Project you would like to get mastered."
+    project_title = gets.chomp
+    if Project.find_by(title: project_title)
+      Project.find_by.update(submitted: project_title, submitted: true)
+       print "#{project_title} has been mastered."
+    else
+      puts "Please enter valid project."
+    end
+    self.main_menu
+  end
 
   def done
     puts "goodbye <333"
