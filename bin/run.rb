@@ -1,5 +1,6 @@
 require_relative '../config/environment'
 
+#Using TTY was a lot easier
 
 cli_inst = CLI.new
 
@@ -66,8 +67,6 @@ cli_inst.main_menu
 #           CLI.list_artists
 #         when "list engineers"
 #           CLI.list_engineers
-#         when "login"
-#           CLI.login
 #         else
 #           puts "\n invalid command, to see a list of available commands type 'help' "
 #         end
@@ -83,32 +82,4 @@ cli_inst.main_menu
 #   def self.list_engineers
 #     Engineer.all.each_with_index { |engineer,i| puts (i+1).to_s.bold + ".\t#{engineer.name + engineer.credentials}" }
 #   end
-#
-#   # def self.login
-#   #
-#   # end
-#
-#   def self.help
-#   puts "Help".bold
-#   puts "  help\t\t\t:show this help menu".green
-#   puts "Login".bold
-#   puts "  login \t\t:login with your credentials".green
-#   puts "List".bold
-#   puts "  list projects\t\t:list all projects".green
-#   puts "  list artists\t\t:list all artists".green
-#   puts "  list engineers\t:list all engineers with their credentials".green
-#   puts "Quit".bold
-#   puts "  quit\t\t\t:quit the program"
-#   puts "  exit\t\t\t:alias for quit"
-#   end
-#
-#   def self.submit_project(project)
-#     project = gets.chomp
-#   if project == project
-#     project.submitted = true
-#   else
-#     "Please enter valid project"
-#   end
-# end
-#
 # end
